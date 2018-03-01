@@ -9,6 +9,21 @@
   </head>
 
   <body>
+  	<header>
+  		<div class="header-logo">
+  			<%= link_to("QiitaClone","/") %>
+  		</div>
+  		<ul class="header-menus">
+  			<li>
+  				<%= link_to("ユーザー登録", "/signup") %>
+  			</li>
+  			<li>
+  				<%= link_to("ログイン","/login")%>
+  			</li>
+  		</ul>
+
+  	</header>
+
     <%= yield %>
   </body>
 </html>
