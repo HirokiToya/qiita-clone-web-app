@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-  	@user = User.find_by(params[:id])
+  	@user = User.find(params[:id])
   end
 
   def update
@@ -32,9 +32,10 @@ class UsersController < ApplicationController
   	@user.name = params[:name]
   	@user.email = params[:email]
   	@user.password = params[:password]
+    @user.self_introduction = params[:self_introduction]
 
   	if @user.save
-  		flash[:notice] = "ユーザー情報を編集しました"
+  		flash.now[:notice] = "ユーザー情報を編集しました"
   		redirect_to @user
   	else
   		render("users/edit")
