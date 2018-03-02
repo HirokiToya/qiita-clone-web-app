@@ -16,12 +16,17 @@
   		</div>
   		<ul class="header-menus">
         <% if logged_in? %>
+<<<<<<< HEAD
           <li><%= link_to "ユーザー", current_user %></li>
+=======
+          <li><%= link_to "マイページ",'#' %></li>
+          <li><%= link_to "Profile", current_user %></li>
+>>>>>>> updating-users
           <li><%= link_to "編集", "#" %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li> 
         <% else%>
           <li><%= link_to("ユーザー登録", "/signup") %></li>
-           <li><%= link_to("ログイン","/login")%></li>
+          <li><%= link_to("ログイン","/login")%></li>
         <% end %>
   		</ul>
 
