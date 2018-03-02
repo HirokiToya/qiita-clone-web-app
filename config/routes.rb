@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
+  root "home#top"
   get "/"=>"home#top"
+  get 'users/index'
   get "/signup"=>"users#new"
-  get "/login"=>"users#login"
+  get "/login"=>"sessions#new"
+  post "/login"=>"sessions#create"
+  delete "/logout"=>"sessions#destroy"
   post "users/:id/update" => "users#update"
   resources :users
 

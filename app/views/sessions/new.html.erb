@@ -1,0 +1,17 @@
+<% provide(:title,"Log in") %>
+<h1>Qiitaにログイン</h1>
+
+<%= form_for(:session, url:login_path) do |f| %>
+	<%= f.label :email %>
+	<%= f.email_field :email %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<%= f.submit "Qiitaにログイン", class: "btn btn-primary" %>
+
+<% end %>
+
+
+<p>Qiitaのアカウントを持っていない場合は <%= link_to "新規登録" , signup_path %>から</p>
+

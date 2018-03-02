@@ -9,20 +9,31 @@
   </head>
 
   <body>
+    
   	<header>
   		<div class="header-logo">
   			<%= link_to("QiitaClone","/") %>
   		</div>
   		<ul class="header-menus">
-  			<li>
-  				<%= link_to("ユーザー登録", "/signup") %>
-  			</li>
-  			<li>
-  				<%= link_to("ログイン","/login")%>
-  			</li>
+        <% if logged_in? %>
+          <li><%= link_to "マイページ",'#' %></li>
+          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "編集", "/users/#{@user.id}/edit" %></li>
+          <li><%= link_to "Log out", logout_path, method: :delete %></li> 
+        <% else%>
+          <li><%= link_to("ユーザー登録", "/signup") %></li>
+           <li><%= link_to("ログイン","/login")%></li>
+        <% end %>
   		</ul>
 
   	</header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
 
     <%= yield %>
   </body>
