@@ -1,0 +1,25 @@
+<div class="main article-new">
+	<div class="container">
+		<h1 class="form-heading">投稿する</h1>
+		<%= form_tag("/articles/create") do %>
+			<div class="form">
+				<div class="form-body">
+					<% @article.errors.full_messages.each do |message| %>
+						<div class="form-error">
+							<%= message %>
+						</div>
+					<% end %>
+
+					<div><textarea name="title" placeholder="タイトル"><%= @article.title %></textarea></div>
+					<div><textarea name="content" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
+					<div><input type="submit" value="投稿"></div>
+
+
+
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+

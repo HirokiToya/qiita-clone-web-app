@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+
   def create
   	@user = User.new(user_params)
   	if @user.save
@@ -22,13 +23,15 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
-  
+ 
+
   def edit
-  	@user = User.find(params[:id])
+  	@user = User.find_by(id: params[:id])
   end
 
+
   def update
-  	@user = User.find_by(params[:id])
+  	@user = User.find_by(id: params[:id])
   	@user.name = params[:name]
   	@user.email = params[:email]
   	@user.password = params[:password]
