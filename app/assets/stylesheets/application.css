@@ -96,6 +96,7 @@ span.picture {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 30%;
+  height: 50px;
   margin-bottom: 5px;
   
 }

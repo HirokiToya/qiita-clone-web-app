@@ -4,10 +4,10 @@
       <div class="articles-index-item">
       	
 		<div class="article-title">
-      		<%= link_to(article.title , "/articles/#{article.id}" ) %>
+      		<p><%= link_to(article.title , "/articles/#{article.id}" ) %></p>
      	 </div>
      	 <div class="article-user-name">
-     	 	<%= link_to gravatar_for(article.user,size: 50),article.user %>
+     	 	<%= link_to gravatar_for(article.user,size: 100),article.user %>
      	 	<%= article.user.name %>
      	 </div>
 
