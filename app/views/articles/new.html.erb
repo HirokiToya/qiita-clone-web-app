@@ -10,9 +10,18 @@
 						</div>
 					<% end %>
 
-					<div><textarea name="title" placeholder="タイトル"><%= @article.title %></textarea></div>
-					<div><textarea name="content" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
+					<div><input type="text" name="title" placeholder="タイトル"><%= @article.title %></div>
+
+					<div> 
+						<input type="text" name="tag_list" placeholder="プログラミング技術に関するタグをカンマ区切りで5つまで入力"><%= @article.tag_list.join(",") %>
+					</div>
+
+
+					<div><textarea type="text" name="content" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
 					<div><input type="submit" value="投稿"></div>
+
+						
+				
 
 
 

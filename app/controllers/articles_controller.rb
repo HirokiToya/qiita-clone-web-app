@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	
+	protect_from_forgery except: :create # createアクションを除外
 	before_action :authenticate_user
   	before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
   	
@@ -16,24 +16,30 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
+		
 	end
 
 	def create
-		
-		@article = Article.new(title: params[:title],
-							   content: params[:content],
-							   user_id: current_user.id)
-		
+
+		@article = Article.new
+
+		@article.title = params[:title]
+		@article.content = params[:content]
+		@article.user_id = @current_user.id
+		@article.tag_list = params[:tag_list] 
+
+
 		if @article.save
 			flash[:notice] = "投稿を作成しました"
 			redirect_to ("/articles/index")
 
 		else
-			flash[:notice] = "投稿できませんでした"
+			
 			render("articles/new")
 		end
 
 	end
+
 
 	def edit
 		@article = Article.find_by(id: params[:id])
@@ -43,6 +49,7 @@ class ArticlesController < ApplicationController
 		@article = Article.find_by(id: params[:id])
 		@article.title = params[:title]
 		@article.content = params[:content]
+		@article.tag_list = params[:tag_list]
 		if @article.save
 			flash[:notice] = "投稿を編集しました"
 			redirect_to("/articles/index")
@@ -65,6 +72,10 @@ class ArticlesController < ApplicationController
       		flash[:notice] = "権限がありません"
       		redirect_to("/posts/index")
     	end
+  	end
+
+  	def article_params
+  		params.require(:article).permit(:title, :content, :user_id, :tag_list)
   	end
 
 	
