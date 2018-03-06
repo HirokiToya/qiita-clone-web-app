@@ -4,21 +4,22 @@
     <div class="articles-show-item">
 
         <div class="article-user-name">
-        <%= link_to gravatar_for(@article.user,size: 100),@article.user %>
-        <%= @article.user.name %>
-       </div>
+          <%= link_to gravatar_for(@article.user,size: 50),@article.user %><br>
+          <h5><%= @article.user.name %></h5>
+          <%= @article.created_at %>
+          
+        </div>
+       
 
-        <div><h1><%= @article.title %></h1></div>
+        <div><h3><%= @article.title %></h3></div>
         
         <% @article.tag_list.each do |tag| %>
-          <span class="label label-primary"><%= tag %></span>
+          <p class="label label-primary"><%= link_to(tag, "#") %></p>
         <% end %>
 
-        <div><p><%= @article.content %></h6></div>
+        <div><p><%= @article.content %></p></div>
 
-      <div class="post-time ">
-        <%= @article.created_at %>
-      </div>
+      
     </div>
   </div>
 

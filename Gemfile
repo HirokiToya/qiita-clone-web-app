@@ -21,6 +21,7 @@ gem 'jquery-rails',            '4.3.1'
 gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.7.0'
 gem 'acts-as-taggable-on',     '~> 4.0'
+gem 'ransack'
 
 
 group :development, :test do

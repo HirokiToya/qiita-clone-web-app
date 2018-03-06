@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get "articles/:id/edit"=>"articles#edit"
   post "articles/:id/update" => "articles#update"
   post "articles/:id/destroy" => "articles#destroy"
+  resources :articles
+
+  get "/articles" => "articles#search"
+  get "tags/:tag" => "articles#show"
 
   
   

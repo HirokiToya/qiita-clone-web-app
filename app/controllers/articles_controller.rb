@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
 
 	def index
 		@articles = Article.all.order(created_at: :desc)
+		@q = Article.ransack(params[:q])
+		@articles = @q.result(distinct: true)
 	end
 
 	def show
@@ -74,9 +76,23 @@ class ArticlesController < ApplicationController
     	end
   	end
 
+
+
+
+  	def search
+  		@q = Article.search(search_params)
+  		@articles = @q.result(distinct: true)
+  	end
+
   	def article_params
   		params.require(:article).permit(:title, :content, :user_id, :tag_list)
   	end
+
+  	def search_params
+  		params.require(:q).permit(:title_cont)
+  	end
+
+
 
 	
 
