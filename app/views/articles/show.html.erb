@@ -3,6 +3,11 @@
   <div class="container">
     <div class="articles-show-item">
 
+        <div class="article-user-name">
+        <%= link_to gravatar_for(@article.user,size: 100),@article.user %>
+        <%= @article.user.name %>
+       </div>
+
         <div><h1><%= @article.title %></h1></div>
         
         <% @article.tag_list.each do |tag| %>
