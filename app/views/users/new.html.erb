@@ -3,7 +3,7 @@
 
 <div class="form-error">
 	<% @user.errors.full_messages.each do |message| %>
-		<%= message %>
+		<div><%= message %></div>
 	<% end %>
 </div>
 

@@ -16,16 +16,12 @@ Rails.application.routes.draw do
   get "articles/:id/edit"=>"articles#edit"
   post "articles/:id/update" => "articles#update"
   post "articles/:id/destroy" => "articles#destroy"
-  resources :articles
-
-  get "/articles" => "articles#search"
-  get "tags/:tag" => "articles#show"
-
   
-  
+  get "tags/:tag" => "articles#tag_index", as: :tag
+
   
   resources :users
-  resources :articles,only: [:create, :destroy]
+  resources :articles
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

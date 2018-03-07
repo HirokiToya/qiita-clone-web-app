@@ -5,15 +5,27 @@ class ArticlesController < ApplicationController
   	
 
 	def index
-		@articles = Article.all.order(created_at: :desc)
 		@q = Article.ransack(params[:q])
 		@articles = @q.result(distinct: true)
 	end
 
+	def tag_index
+
+		if params[:tag]
+			@articles = Article.tagged_with(params[:tag])
+		else
+			@articles = Article.all
+		end
+
+		@type = params[:tag]
+		@tag_articles = @articles.includes(:user).page(params[:page]).order("id DESC")
+	end
+
+
+
 	def show
 		@article = Article.find_by(id: params[:id])
-		@user = @article.user
-
+		#@user = @article.user
 	end
 
 	def new
@@ -76,21 +88,24 @@ class ArticlesController < ApplicationController
     	end
   	end
 
-
-
-
-  	def search
-  		@q = Article.search(search_params)
-  		@articles = @q.result(distinct: true)
-  	end
+  	
 
   	def article_params
   		params.require(:article).permit(:title, :content, :user_id, :tag_list)
   	end
 
+
+  	def search
+  		@q = Article.search(search_params)
+  		@articles = @q.result(distinct: true)
+
+  	end
+
   	def search_params
   		params.require(:q).permit(:title_cont)
   	end
+
+
 
 
 
