@@ -1,26 +1,27 @@
-<h1>Qiitaへようこそ</h1>
-<p>新規登録(無料)して利用を開始しましょう。</p>
+
 
 <div class="form-error">
 	<% @user.errors.full_messages.each do |message| %>
 		<div><%= message %></div>
 	<% end %>
 </div>
+<div class="container">
+	<h1>Qiitaへようこそ</h1>
+	<p>新規登録(無料)して利用を開始しましょう。</p>
+
+	<%= form_for(@user) do |f| %>
+		<div><%= f.label :name %></div>
+		<div><%= f.text_field :name %></div>
+
+		<div><%= f.label :email %></div>
+		<div><%= f.text_field :email %></div>
+
+		<div><%= f.label :password %></div>
+		<div><%= f.text_field :password %></div>
+
+		<%= f.submit "新規登録", class: "btn btn-primary" %>
+	<% end %>
 
 
-<%= form_for(@user) do |f| %>
-	<div><%= f.label :name %></div>
-	<div><%= f.text_field :name %></div>
-
-	<div><%= f.label :email %></div>
-	<div><%= f.text_field :email %></div>
-
-	<div><%= f.label :password %></div>
-	<div><%= f.text_field :password %></div>
-
-	<%= f.submit "新規登録", class: "btn btn-primary" %>
-<% end %>
-
-
-
+</div>
 

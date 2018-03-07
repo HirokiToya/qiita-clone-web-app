@@ -1,13 +1,14 @@
 
 <%# 検索フォーム %>
-<div class="form">
-  <div class="form-body">
-    <%= search_form_for @q do |f| %>
-      <div><%= f.label :title_cont, "タイトルを検索" %></div>
-      <div class="form-search"><%= f.search_field :title_cont, :placeholder => "キーワードを入力" %></div>    
-        <div class="form-search"><%= f.submit %></div>
-    <% end %>
+<div class="container">
+  <div class="form">
+    <div class="form-body">
+      <%= search_form_for @q do |f| %>
+        <div class="form-search-content"><%= f.search_field :title_cont, :placeholder => "キーワードを入力" %></div>    
+          <div class="form-search-btn"><%= f.submit %></div>
+      <% end %>
 
+    </div>
   </div>
 </div>
 
