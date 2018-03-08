@@ -5,8 +5,9 @@
 /* universal */
 
 body {
-  padding-top: 60px;
-  padding-left: 10px
+  margin: 0;
+  background-color:#FFFFF0;
+  
 }
 
 section {
@@ -40,12 +41,12 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
-  color: #777;
+  
 }
 
 p {
@@ -53,15 +54,49 @@ p {
   line-height: 1.7em;
 }
 
+li{
+  list-style: none;
+  
+}
+
+
+
 
 
 /* ヘッダー ================================ */
+.header{
+  width: 100%;
+  background-color: #32CD32;
+  position: fixed;
+}
 
 
+.heder-logo{
+  font-size: 28px;
+  float: left;
+  padding: 10px;
+  color:white;
+}
+.header-left{
+  float: left;
+  padding: 20px 20px;
 
+}
+.header-right{
+  float: right;
+  
+}
+.header-menus li{
+  float:left;
+  padding: 20px;
+  
 
+}
 
-
+.top-wrapper{
+  padding-top: 180px;
+  text-align: center;
+}
 
 
 
@@ -75,8 +110,13 @@ p {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-
+.articles-show-item{
   
+}
+
+.article-user-name{
+  
+}
 
   .user {
     margin-top: 5em;
@@ -127,6 +167,7 @@ input, textarea,select, .uneditable-input {
   width: 100%;
   height: 50px;
   margin-bottom: 5px;
+  color:black;
   
 }
 
@@ -137,10 +178,6 @@ textarea{
 .form-search{
   width:80%;
 }
-
-
-
-
 
 
 
@@ -163,6 +200,23 @@ textarea{
   
   background-color: #F0F8FF;
   margin-right: 10px;
+}
+
+
+.btn {
+  padding: 8px 24px;
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0px 8px #008000;
+}
+
+
+.btn:active{
+ 
+  position: relative;
+  top:6px;
+  box-shadow: 0px 2px #008000;
 }
 
 

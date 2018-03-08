@@ -6,39 +6,44 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
   </head>
 
   <body>
     
-  	<header>
-  		<div class="header-logo">
-  			<%= link_to("ホーム",root_url) %>
-  		</div>
-  		<ul class="header-menus">
-        <% if logged_in? %>
+  	<header class="header">
+      <div class="container">
 
-          <li><%= link_to (@current_user.name), current_user %></li>
-          <li><%= link_to "投稿する", "/articles/new" %></li>
-          <li><%= link_to "投稿一覧", "/articles/index" %></li>
-          <li><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks") %></li>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li> 
-        <% else%>
-          <li><%= link_to("ユーザー登録", "/signup") %></li>
-          <li><%= link_to("ログイン","/login")%></li>
-        <% end %>
-  		</ul>
+        <div class="heder-logo">QiitaClone</div>
+    		<div class="header-left">
+    			<li><%= link_to("ホーム",root_url,:style => "color:white; text-decoration: none;") %></li>
+    		</div>
+        <div class="header-right">
+      		<ul class="header-menus">
+            <% if logged_in? %>
 
-      
+              <li><%= link_to (@current_user.name), current_user ,:style => "color:white; text-decoration: none;"%></li>
+              <li><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></li>
+              <li><%= link_to "投稿一覧", "/articles/index",:style => "color:white; text-decoration: none;" %></li>
+              <li><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></li> 
+            <% else%>
+              <li><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></li>
+              <li><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></li>
+            <% end %>
+      		</ul>
+        </div>
+      </div>
 
-  	
+    </header>
 
     <% if flash[:notice] %>
       <div class="flash">
-        <%= flash[:notice] %>
+       <%= flash[:notice] %>
       </div>
     <% end %>
-
-    </header>
 
 
     <%= yield %>

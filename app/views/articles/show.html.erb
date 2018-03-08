@@ -1,21 +1,22 @@
+<br><br><br><br>
 <div class="main articles-show">
   
   <div class="container">
     <div class="articles-show-item">
 
         <div class="article-user-name">
-          <%= link_to gravatar_for(@article.user,size: 50),@article.user %><br>
-          <h5><%= @article.user.name %></h5>
-          <%= @article.created_at %>
+          <a><%= link_to gravatar_for(@article.user,size: 50),@article.user %></a>
+          <br><h5><%= @article.user.name %></h5>
+          <h5><%= @article.created_at %>に投稿</h5>
           
         </div>
        
 
-        <div><h3><%= @article.title %></h3></div>       
+        <div><h2><%= @article.title %></h2></div>       
 
         <% @article.tag_list.each do |tag| %>
           <span class="label label-primary">
-             <%= link_to tag, tag_path(tag) %>
+             <a><%= link_to tag, tag_path(tag) %></a>
           </span>  
         <% end %> 
       
@@ -25,16 +26,16 @@
 
         <% if @article.user_id == @current_user.id %>
           <div class="article-menus">
-            <%= link_to("編集", "/articles/#{@article.id}/edit") %>
-            <%= link_to("削除", "/articles/#{@article.id}/destroy", {method: "article"}) %>
+            <a><%= link_to("編集", "/articles/#{@article.id}/edit") %></a>
+            <a><%= link_to("削除", "/articles/#{@article.id}/destroy", {method: "article"}) %></a>
           </div>
         <% else %>
 
           <% if Stock.find_by(user_id: @current_user.id,article_id: @article.id)%>
-            <%= link_to("ストック済み","/stocks/#{@article.id}/destroy",{method: "article"})%>
-          <% else %>
-            <%= link_to("ストックする","/stocks/#{@article.id}/create",{method: "article"})%>
-          <% end%>
+            <a><%= link_to("ストック済み","/stocks/#{@article.id}/destroy",{method: "article"})%>
+          <% else %></a>
+            <a><%= link_to("ストックする","/stocks/#{@article.id}/create",{method: "article"})%>
+          <% end%></a>
 
         <% end %>
 

@@ -1,6 +1,6 @@
 <div class="main article-new">
 	<div class="container">
-		<h1 class="form-heading">投稿する</h1>
+		<br><br><br><h2 class="form-heading">投稿する</h2>
 		<%= form_tag("/articles/create") do %>
 			<div class="form">
 				<div class="form-body">
@@ -18,7 +18,7 @@
 
 
 					<div><textarea type="text" name="content" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
-					<div><input type="submit" value="投稿"></div>
+					<div><br><input type="submit" class="btn btn-success" value="投稿"></div>
 				</div>
 			</div>
 		<% end %>
