@@ -47,6 +47,13 @@ class UsersController < ApplicationController
   end
 
 
+  def stocks
+    @user = User.find_by(id: params[:id])
+    @stocks = Stock.where(user_id: @user.id).reverse_order
+
+  end
+
+
 end
 
 

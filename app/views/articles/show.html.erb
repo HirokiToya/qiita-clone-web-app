@@ -21,16 +21,26 @@
       
         <div><br><p><%= @article.content %></p></div>
 
+
+
+        <% if @article.user_id == @current_user.id %>
+          <div class="article-menus">
+            <%= link_to("編集", "/articles/#{@article.id}/edit") %>
+            <%= link_to("削除", "/articles/#{@article.id}/destroy", {method: "article"}) %>
+          </div>
+        <% else %>
+
+          <% if Stock.find_by(user_id: @current_user.id,article_id: @article.id)%>
+            <%= link_to("ストック済み","/stocks/#{@article.id}/destroy",{method: "article"})%>
+          <% else %>
+            <%= link_to("ストックする","/stocks/#{@article.id}/create",{method: "article"})%>
+          <% end%>
+
+        <% end %>
+
       
     </div>
-  </div>
-
-  <% if @article.user_id == @current_user.id %>
-    <div class="article-menus">
-      <p><%= link_to("編集", "/articles/#{@article.id}/edit") %></p>
-      <p><%= link_to("削除", "/articles/#{@article.id}/destroy", {method: "article"}) %></p>
-    </div>
-  <% end %>
+  </div>  
 
 </div>
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/login"=>"sessions#create"
   post "users/:id/update" => "users#update"
   delete "/logout"=>"sessions#destroy"
+  get "users/:id/stocks" => "users#stocks"
 
   get "articles/index"=>"articles#index"
   get "articles/new"=>"articles#new"
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
   post "articles/:id/destroy" => "articles#destroy"
   
   get "tags/:tag" => "articles#tag_index", as: :tag
+
+  post "stocks/:article_id/create" => "stocks#create"
+  post "stocks/:article_id/destroy" => "stocks#destroy"
 
   
   resources :users
