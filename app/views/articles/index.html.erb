@@ -5,8 +5,10 @@
   <div class="form">
     <div class="form-body">
       <%= search_form_for @q do |f| %>
-        <br><br><br><div class="form-search-content"><%= f.search_field :title_cont, :placeholder => "キーワードを入力" %></div>    
-          <div><%= f.submit "検索", class: "btn btn-success" %></div><br>
+        <br><br><br>
+        <%= f.search_field :title_cont, :placeholder => "キーワードを入力" %>
+        <span><%= f.submit "検索", class: "btn btn-success" %></span>
+        <br><br><br>
       <% end %>
 
     </div>
@@ -24,7 +26,7 @@
      	 	  <%= link_to gravatar_for(article.user,size: 50),article.user %>
           <h6><%=link_to(article.user.name, article.user) %>が<%= article.created_at %>に投稿</h6>
 
-
+          <span class="fa fa-tags"></span>
           <% article.tag_list.each do |tag| %>
             <span class="label label-primary">
               <%= link_to tag, tag_path(tag) %>
