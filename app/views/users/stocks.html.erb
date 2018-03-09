@@ -1,5 +1,6 @@
 <div class="container">
-	<br><br><br><h2>ストック一覧</h2>
+	<br><br><br>
+	<h2><span class="fa fa-folder" style="color:limegreen"></span> ストック一覧</h2>
 		<% @stocks.each do |stock| %>
 			<div class="article">
 				<% article = Article.find_by(id: stock.article_id) %>

@@ -32,9 +32,13 @@
         <% else %>
 
           <% if Stock.find_by(user_id: @current_user.id,article_id: @article.id)%>
-            <a><%= link_to("ストック済み","/stocks/#{@article.id}/destroy",{method: "article"})%>
+            <a><%= link_to("/stocks/#{@article.id}/destroy",{method: "article"}) do %>
+              <span class="fa fa-folder fa-2x" style="color:limegreen"></span>
+            <% end %>
           <% else %></a>
-            <a><%= link_to("ストックする","/stocks/#{@article.id}/create",{method: "article"})%>
+            <a><%= link_to("/stocks/#{@article.id}/create",{method: "article"}) do %>
+              <span class="fa fa-folder-open fa-2x" style="color:limegreen"></span>
+            <% end %>
           <% end%></a>
 
         <% end %>
