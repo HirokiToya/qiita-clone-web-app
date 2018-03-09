@@ -64,7 +64,8 @@ li{
 
 
 /* ヘッダー ================================ */
-.header{
+header{
+  height: 65px;
   width: 100%;
   background-color: #32CD32;
   position: fixed;
@@ -77,21 +78,44 @@ li{
   padding: 10px;
   color:white;
 }
-.header-left{
-  float: left;
-  padding: 20px 20px;
 
+.header-left{
+  float: left;  
 }
+
+.header-left a{
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
+}
+
+.header-left a:hover{
+  background-color: #98FB98;
+}
+
+
 .header-right{
   float: right;
-  
+  margin-right: -25px;
 }
-.header-menus li{
-  float:left;
-  padding: 20px;
-  
 
+.header-right a{
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
 }
+
+.header-right a:hover {
+  background-color: #98FB98;
+}
+
+
+
+/* top-message */
 
 .top-wrapper{
   padding-top: 180px;

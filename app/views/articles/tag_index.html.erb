@@ -1,17 +1,20 @@
-<br><br><br>
-<h1>Same Tag List</h1>
 
-<% @tag_articles.each do |article| %>    
-    <div class="article">
-      <h4><%= link_to(article.title , "/articles/#{article.id}" ) %></h4>
-      <%= link_to gravatar_for(article.user,size: 50),article.user %>
-      <h6><%=link_to(article.user.name, article.user) %>が<%= article.created_at %>に投稿</h6>
+<div class="container">
+  <br><br><br>
+  <h2>Same Tag List</h2>
 
-        <% article.tag_list.each do |tag| %>
-        	<span class="label label-primary">
-              <%= link_to tag, tag_path(tag) %>
-            </span>  
-        <% end %>	
-                
-    </div>
-<% end %>
+  <% @tag_articles.each do |article| %>    
+      <div class="article">
+        <h4><%= link_to(article.title , "/articles/#{article.id}" ) %></h4>
+        <%= link_to gravatar_for(article.user,size: 50),article.user %>
+        <h6><%=link_to(article.user.name, article.user) %>が<%= article.created_at %>に投稿</h6>
+
+          <% article.tag_list.each do |tag| %>
+          	<span class="label label-primary">
+                <%= link_to tag, tag_path(tag) %>
+              </span>  
+          <% end %>	
+                  
+      </div>
+  <% end %>
+</div>

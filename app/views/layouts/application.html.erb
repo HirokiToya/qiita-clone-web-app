@@ -13,39 +13,31 @@
 
   <body>
     
-  	<header class="header">
+  	<header>
       <div class="container">
 
         <div class="heder-logo">QiitaClone</div>
     		<div class="header-left">
-    			<li><%= link_to("ホーム",root_url,:style => "color:white; text-decoration: none;") %></li>
+    			<a><%= link_to("ホーム",root_url,:style => "color:white; text-decoration: none;") %></a>
     		</div>
         <div class="header-right">
-      		<ul class="header-menus">
             <% if logged_in? %>
 
-              <li><%= link_to (@current_user.name), current_user ,:style => "color:white; text-decoration: none;"%></li>
-              <li><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></li>
-              <li><%= link_to "投稿一覧", "/articles/index",:style => "color:white; text-decoration: none;" %></li>
-              <li><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></li>
-              <li><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></li> 
+              <a class="header-menus-name"><%= link_to (@current_user.name), current_user ,:style => "color:white; text-decoration: none;"%></a>
+              <a class="header-menus-new"><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></a>
+              <a class="header-menus-index"><%= link_to "投稿一覧", "/articles/index",:style => "color:white; text-decoration: none;" %></a>
+              <a class="header-menus-stocks"><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></li>
+              <a class="header-menus-logout"><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a> 
             <% else%>
-              <li><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></li>
-              <li><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></li>
+              <a class="header-menus-signup"><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></a>
+              <a class="header-menus-login"><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></a>
             <% end %>
-      		</ul>
         </div>
       </div>
 
     </header>
 
-    <% if flash[:notice] %>
-      <div class="flash">
-       <%= flash[:notice] %>
-      </div>
-    <% end %>
-
-
     <%= yield %>
+
   </body>
 </html>

@@ -1,20 +1,23 @@
-<% provide(:title, "Edit user")%>
-<h1>プロフィール設定</h1>
+<div class="container">
+<br><br><br><br>
+    <% provide(:title, "Edit user")%>
+    <h2>プロフィール設定</h2>
 
-<div class="form-error">
-    <% @user.errors.full_messages.each do |message| %>
-    	<%= message %>
+    <div class="form-error">
+        <% @user.errors.full_messages.each do |message| %>
+        	<%= message %>
+        <% end %>
+    </div>
+
+    <%= form_tag("/users/#{@user.id}/update") do %>
+    	<p>ユーザー名</p>
+        <input name="name" value="<%= @user.name %>">
+        <p>メールアドレス</p>
+        <input name="email" value="<%= @user.email %>">
+        <p>パスワード</p>
+        <input name="password" value="<%= @user.password %>">
+        <p>自己紹介</p>
+        <input name="self_introduction" value="<%= @user.self_introduction %>">
+        <div><input type="submit" value="保存"></div>
     <% end %>
 </div>
-
-<%= form_tag("/users/#{@user.id}/update") do %>
-	<p>ユーザー名</p>
-    <input name="name" value="<%= @user.name %>">
-    <p>メールアドレス</p>
-    <input name="email" value="<%= @user.email %>">
-    <p>パスワード</p>
-    <input name="password" value="<%= @user.password %>">
-    <p>自己紹介</p>
-    <input name="self_introduction" value="<%= @user.self_introduction %>">
-    <div><input type="submit" value="保存"></div>
-<% end %>
