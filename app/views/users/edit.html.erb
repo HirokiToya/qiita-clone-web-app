@@ -5,19 +5,35 @@
 
     <div class="form-error">
         <% @user.errors.full_messages.each do |message| %>
-        	<%= message %>
+        	<%= message %><br>
         <% end %>
     </div>
 
-    <%= form_tag("/users/#{@user.id}/update") do %>
-    	<p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>">
-        <p>パスワード</p>
-        <input name="password" value="<%= @user.password %>">
-        <p>自己紹介</p>
-        <input name="self_introduction" value="<%= @user.self_introduction %>">
-        <div><input type="submit" class="btn btn-success" value="保存" ></div>
+    <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <br>
+        <a a href="http://gravatar.com/emails" target="_blank">変更</a>
+    </div>
+
+    <br>
+
+    <%= form_for(@user) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control" %>
+
+        <%= f.label :self_introduction %>
+        <%= f.text_field :self_introduction, class: "form-control"%>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "保存する", class: "btn btn-success" %>
     <% end %>
+
 </div>

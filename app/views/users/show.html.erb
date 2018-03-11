@@ -1,21 +1,24 @@
-
+<br><br><br><br>
 <div class="container">
-	<br><br><br><br>
+	
 	<% provide(:title, @user.name) %>
-
-		<%= gravatar_for @user,size:200%>
-		<h3><%= @user.name %></h3>
+	<%= gravatar_for @user,size:200%>
+	<h3><%= @user.name %></h3>
 
 	<h5><%= @user.email %></h5>
 	<h5><%= @user.self_introduction %></h5>
 
-	<% if @user.id == @current_user.id %>
-		<%= link_to("/users/#{@user.id}/edit") do %>
-			<span class="fa fa-edit fa-2x"></span>
+	<% if logged_in? %>
+		<% if @user.id == @current_user.id %>
+			<%= link_to("/users/#{@user.id}/edit") do %>
+				<span class="fa fa-edit fa-2x"></span>
+			<% end %>
 		<% end %>
 	<% end %>
 
-	<br><br><h4>投稿した記事</h4>
+	<br><br>
+	
+	<h4>投稿した記事</h4>
 	<% @articles.each do |article| %>
 		<div class="article">
 			<div class="article-index-item">

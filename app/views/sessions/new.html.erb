@@ -1,8 +1,18 @@
+<br><br><br><br>
 
 <div class="container">
+	<h2>Qiitaにログイン</h2>
+	
+	<% if @error_message %>
+		<div class="form-error">
+			<%= @error_message %>
+		</div>
+	<% end %>
+	
 	
 	<% provide(:title,"Log in") %>
-	<br><br><br><br><h2>Qiitaにログイン</h2>
+
+	
 	<%= form_for(:session, url:login_path) do |f| %>
 		<div><%= f.label :email %></div>
 		<div><%= f.email_field :email, :placeholder =>"メールアドレス" %></div>

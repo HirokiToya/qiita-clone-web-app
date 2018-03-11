@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   		log_in user
   		redirect_to user
   	else
-  		flash.now[:notice]="メールアドレスかパスワードが間違っています"
+  		@error_message = "メールアドレスかパスワードが間違っています"
   		render 'new'
   	end
   end

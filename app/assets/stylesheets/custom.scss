@@ -59,7 +59,9 @@ li{
   
 }
 
-
+.fa {
+  margin-right: 5px;
+}
 
 
 
@@ -130,6 +132,11 @@ header{
 
 /* articles */
 
+.article{
+  padding: 10px; 
+    border-bottom: 2px solid #D3D3D3;
+  }
+
 .articles {
   list-style: none;
   padding: 0;
@@ -195,16 +202,24 @@ input, textarea,select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   height: 50px;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   color:black;
+
   
 }
 
-textarea{
-  height:450px;
+.title-form{
+  height: 45px;
+  font-size: 25px;
 }
 
+.tag-list-form{
+  height: 30px;
+}
 
+.content-form{
+  height: 500px;
+}
 
 #error_explanation{
   color: red;

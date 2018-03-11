@@ -1,6 +1,8 @@
+<br><br><br>
+
 <div class="main articles-new">
   <div class="container">
-    <h1 class="form-heading">編集する</h1>
+    <h2 class="form-heading">編集する</h2>
     <%= form_tag("/articles/#{@article.id}/update") do %>
       <div class="form">
         <div class="form-body">
@@ -10,9 +12,9 @@
             </div>
           <% end %>
 
-          <div><textarea name="title"><%= @article.title %></textarea></div>
-          <div><textarea name="tag_list"><%= @article.tag_list%></textarea></div>
-          <div><textarea name="content"><%= @article.content %></textarea></div>
+          <div><textarea name="title" placeholder="タイトル"><%= @article.title %></textarea></div>
+          <div><textarea name="tag_list" class="tag-list-form" placeholder="プログラミング技術に関するタグをカンマ区切りで入力"><%= @article.tag_list%></textarea></div>
+          <div><textarea name="content" class="content-form" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
           <input type="submit" class="btn btn-success" value="保存">
         </div>
       </div>

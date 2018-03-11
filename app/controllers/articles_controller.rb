@@ -5,9 +5,8 @@ class ArticlesController < ApplicationController
   	
 
 	def index
-		
 		@q = Article.ransack(params[:q])
-		@articles = @q.result(distinct: true)
+		@articles = @q.result(distinct: true).paginate(page: params[:page])
 	end
 
 	def tag_index
@@ -26,7 +25,6 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find_by(id: params[:id])
-		#@user = @article.user
 	end
 
 	def new
@@ -48,8 +46,7 @@ class ArticlesController < ApplicationController
 			flash[:notice] = "投稿を作成しました"
 			redirect_to ("/articles/index")
 
-		else
-			
+		else 
 			render("articles/new")
 		end
 
@@ -65,6 +62,7 @@ class ArticlesController < ApplicationController
 		@article.title = params[:title]
 		@article.content = params[:content]
 		@article.tag_list = params[:tag_list]
+		
 		if @article.save
 			flash[:notice] = "投稿を編集しました"
 			redirect_to("/articles/index")

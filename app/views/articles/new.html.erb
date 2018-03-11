@@ -1,6 +1,8 @@
+<br><br><br>
+
 <div class="main article-new">
 	<div class="container">
-		<br><br><br><h2 class="form-heading">投稿する</h2>
+		<h2 class="form-heading">投稿する</h2>
 		<%= form_tag("/articles/create") do %>
 			<div class="form">
 				<div class="form-body">
@@ -10,15 +12,19 @@
 						</div>
 					<% end %>
 
-					<div><input type="text" name="title" placeholder="タイトル"><%= @article.title %></div>
-
-					<div> 
-						<input type="text" name="tag_list" placeholder="プログラミング技術に関するタグをカンマ区切りで入力"><%= @article.tag_list %>
+					<div>
+						<textarea type="text" name="title" class="title-form" placeholder="タイトル"><%= @article.title %></textarea>
 					</div>
 
+					<div> 
+						<textarea type="text" name="tag_list" class="tag-list-form" placeholder="プログラミング技術に関するタグをカンマ区切りで入力"><%= @article.tag_list %></textarea>
+					</div>
 
-					<div><textarea type="text" name="content" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
-					<div><br><input type="submit" class="btn btn-success" value="投稿"></div>
+					<div>
+						<textarea type="text" name="content"  class="content-form" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea>
+					</div>
+
+					<input type="submit" class="btn btn-success" value="投稿">
 				</div>
 			</div>
 		<% end %>
