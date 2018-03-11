@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   def authenticate_user
     if @current_user == nil
-      flash[:notice] = "ログインが必要です"
+      flash[:notice] = "ログインしてください"
       redirect_to("/login")
     end
   end
@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
   	#ユーザーのログインを確認する
   	def logged_in_user
   		unless logged_in?
-  			store_location
   			flash[:notice] = "ログインしてください"
   			redirect_to login_url
   		end

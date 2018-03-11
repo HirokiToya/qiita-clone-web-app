@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def update
   	@user = User.find(params[:id])
   	if @user.update_attributes(user_params)
-  		flash.now[:notice] = "ユーザー情報を編集しました"
+  		flash[:notice] = "ユーザー情報を編集しました"
   		redirect_to @user
   	else
   		render("users/edit")
@@ -63,12 +63,6 @@ class UsersController < ApplicationController
     end
 
     #beforeアクション
-    def logged_in_user
-      unless logged_in?
-        flash[:notice] = "ログインしてください"
-        redirect_to login_url
-      end
-    end
 
     def ensure_correct_user
       if @current_user.id != params[:id].to_i
