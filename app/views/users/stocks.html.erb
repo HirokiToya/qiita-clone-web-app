@@ -1,5 +1,7 @@
+<br><br><br>
+<% provide(:title, "ストック一覧") %>
+
 <div class="container">
-	<br><br><br>
 	<h2><span class="fa fa-folder" style="color:limegreen"></span> ストック一覧</h2>
 		<% @stocks.each do |stock| %>
 			<div class="article">
@@ -17,5 +19,6 @@
 		    	<% end %>
 	    	</div>
 	    <% end %>
+	    <%= will_paginate @stocks %> 
 	
 </div>

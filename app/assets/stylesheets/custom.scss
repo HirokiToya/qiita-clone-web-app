@@ -243,23 +243,32 @@ input, textarea,select, .uneditable-input {
 }
 
 
-.btn {
+.btn{
+  width: 100px;
   padding: 8px 24px;
   display: inline-block;
   border-radius: 4px;
   text-align: center;
-  box-shadow: 0px 8px #008000;
   
 }
 
 
-.btn:active{
- 
-  position: relative;
-  top:6px;
-  box-shadow: 0px 2px #008000;
+.search-form{
+  width: 80%;
+  float:left;
+  height:40px;
+
 }
 
+.search-btn{
+  width: 100px;
+  border-radius: 4px;
+  float:left;
+  height:40px;
+  margin-left: 10px;
+ 
+  
+}
 
 
 /* フラッシュ ================================ */

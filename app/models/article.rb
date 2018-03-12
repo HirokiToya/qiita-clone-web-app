@@ -15,7 +15,7 @@ class Article < ApplicationRecord
     return User.find_by(id: self.user_id)
   end
 
-  self.per_page = 10
+
 
 
   scope :find_by_tag, -> tags {

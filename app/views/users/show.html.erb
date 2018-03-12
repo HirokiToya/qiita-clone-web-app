@@ -1,7 +1,7 @@
 <br><br><br><br>
+<% provide(:title, @user.name) %>
+
 <div class="container">
-	
-	<% provide(:title, @user.name) %>
 	<%= gravatar_for @user,size:200%>
 	<h3><%= @user.name %></h3>
 

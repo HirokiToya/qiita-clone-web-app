@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QiitaClone</title>
+    <title><%= yield(:title) %> - QiitaClone</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -28,12 +28,15 @@
               <a><%= link_to (@current_user.name), current_user ,:style => "color:white; text-decoration: none;"%></a>
               <a><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></a>
               <a"><%= link_to "投稿一覧", "/articles/index",:style => "color:white; text-decoration: none;" %></a>
-              <a><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></li>
+              <a><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></a>
               <a><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a> 
+
             <% else%>
+
               <a><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></a>
               <a><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></a>
             <% end %>
+
         </div>
       </div>
 
