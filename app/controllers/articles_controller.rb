@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 		end
 
 		@type = params[:tag]
-		@tag_articles = @articles.includes(:user).page(params[:page]).order("id DESC")
+		@tag_articles = @articles.includes(:user).page(params[:page]).order("id DESC").paginate(page: params[:page])
 	end
 
 
