@@ -18,20 +18,20 @@
     <br>
 
     <%= form_for(@user) do |f| %>
-        <%= f.label :name %>
+        <%= f.label :name,"名前" %>
         <%= f.text_field :name, class: "form-control", :placeholder => "ユーザー名" %>
 
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control", :placeholder => "メールアドレス" %>
+        <%= f.label :email, "Eメール" %>
+        <%= f.email_field :email, class: "form-control", :placeholder => "メールアドレスを入力してください" %>
 
-        <%= f.label :self_introduction %>
-        <%= f.text_field :self_introduction, class: "form-control", :placeholder => "自己紹介"%>
+        <%= f.label :self_introduction, "自己紹介" %>
+        <%= f.text_field :self_introduction, class: "form-control", :placeholder => "自己紹介（200文字以内以内）"%>
 
-        <%= f.label :password %>
+        <%= f.label :password ,"新しいパスワード"%>
         <%= f.password_field :password, class: "form-control", :placeholder => "パスワードを変更する場合は入力してください" %>
 
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation, class: 'form-control', :placeholder => "パスワード確認"  %>
+        <%= f.label :password_confirmation, "パスワード確認欄" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', :placeholder => "変更後のパスワードを再度入力してください"  %>
 
         <br>
         <%= f.submit "保存する", class: "btn btn-success" %>
