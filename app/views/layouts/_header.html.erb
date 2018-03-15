@@ -6,26 +6,18 @@
     		<a><%= link_to("ホーム","/articles/index",:style => "color:white; text-decoration: none;") %></a>
     	</div>
       <div class="header-right">
-          <% if logged_in? %>
+        <% if logged_in? %>
 
-            <a><%= link_to gravatar_for(current_user,size: 50),current_user %></a>
-            <a class="header-new"><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></a>
-            <a><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></a>
-            <a class="header-logout"><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a> 
+          <a><%= link_to gravatar_for(current_user,size: 50),current_user %></a>
+          <a class="header-new"><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></a>
+          <a><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></a>
+          <a class="header-logout"><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a> 
 
-          <% else%>
+        <% else%>
 
-            <a><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></a>
-            <a><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></a>
-          <% end %>
-
+          <a><%= link_to("ユーザー登録", "/signup",:style => "color:white; text-decoration: none;") %></a>
+          <a><%= link_to("ログイン","/login",:style => "color:white; text-decoration: none;")%></a>
+        <% end %>
       </div>
   </div>
-
-  <% if flash[:notice] %>
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
 </header>

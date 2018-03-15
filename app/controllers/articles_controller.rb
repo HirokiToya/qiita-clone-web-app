@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 	protect_from_forgery except: :create # createアクションを除外
 	before_action :authenticate_user
-  	before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
   	
 
 	def index
@@ -21,8 +21,6 @@ class ArticlesController < ApplicationController
 		@tag_articles = @articles.includes(:user).page(params[:page]).order("id DESC").paginate(page: params[:page])
 	end
 
-
-
 	def show
 		@article = Article.find_by(id: params[:id])
 	end
@@ -41,17 +39,13 @@ class ArticlesController < ApplicationController
 		@article.user_id = @current_user.id
 		@article.tag_list = params[:tag_list] 
 
-
 		if @article.save
 			flash[:notice] = "投稿を作成しました"
 			redirect_to ("/articles/index")
-
 		else 
 			render("articles/new")
 		end
-
 	end
-
 
 	def edit
 		@article = Article.find_by(id: params[:id])
@@ -71,7 +65,6 @@ class ArticlesController < ApplicationController
 		end
 	end
 
-
 	def destroy
 		@article = Article.find_by(id: params[:id])
 		@article.destroy
@@ -80,34 +73,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def ensure_correct_user
-    	@article = Article.find_by(id: params[:id])
-    	if @article.user_id != @current_user.id
-      		flash[:notice] = "権限がありません"
-      		redirect_to("/posts/index")
-    	end
+  	@article = Article.find_by(id: params[:id])
+  	if @article.user_id != @current_user.id
+  		flash[:notice] = "権限がありません"
+  		redirect_to("/posts/index")
   	end
-
-  	
-
-  	def article_params
-  		params.require(:article).permit(:title, :content, :user_id, :tag_list)
-  	end
-
-
-  	def search
-  		@q = Article.search(search_params)
-  		@articles = @q.result(distinct: true)
-
-  	end
-
-  	def search_params
-  		params.require(:q).permit(:title_cont)
-  	end
-
-
-
-
-
-	
+  end
 
 end

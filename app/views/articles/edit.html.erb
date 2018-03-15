@@ -1,23 +1,12 @@
-<br><br><br>
 <% provide(:title,"編集") %>
 
-<div class="main articles-new">
-  <div class="container">
-    <h2 class="form-heading">編集する</h2>
+<div class="container">
+  <div class="main">
+    <h2>編集する</h2>
     <%= form_tag("/articles/#{@article.id}/update") do %>
-      <div class="form">
-        <div class="form-body">
-          <% @article.errors.full_messages.each do |message| %>
-            <div class="form-error">
-              <%= message %>
-            </div>
-          <% end %>
-
-          <div><textarea name="title" placeholder="タイトル"><%= @article.title %></textarea></div>
-          <div><textarea name="tag_list" class="tag-list-form" placeholder="プログラミング技術に関するタグをカンマ区切りで入力"><%= @article.tag_list%></textarea></div>
-          <div><textarea name="content" class="content-form" placeholder="プログラミング知識を共有しよう！"><%= @article.content %></textarea></div>
-          <input type="submit" class="btn btn-success" value="保存">
-        </div>
+      <div class="form"> 
+        <%= render 'articles/article_form'%>
+        <input type="submit" class="btn btn-success" value="保存">
       </div>
     <% end %>
   </div>

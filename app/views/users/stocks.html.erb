@@ -1,24 +1,9 @@
-<br><br><br>
 <% provide(:title, "ストック一覧") %>
 
 <div class="container">
-	<h2><span class="fa fa-folder" style="color:limegreen"></span> ストック一覧</h2>
-		<% @stocks.each do |stock| %>
-			<div class="article">
-				<% article = Article.find_by(id: stock.article_id) %>
-
-				<h4><%= link_to(article.title , "/articles/#{article.id}" ) %></h4>
-		     	 	<%= link_to gravatar_for(article.user,size: 50),article.user %>
-		        <h6><%=link_to(article.user.name, article.user) %>が<%= article.created_at %>に投稿</h6>
-				
-				<span class="fa fa-tags"></span>
-		        <% article.tag_list.each do |tag| %>
-		        	<span class="label label-primary">
-		            	<%= link_to tag, tag_path(tag) %>
-		        	</span>  
-		    	<% end %>
-	    	</div>
-	    <% end %>
-	    <%= will_paginate @stocks %> 
-	
+	<div class="main">
+		<h2><span class="fa fa-folder" style="color:limegreen"></span> ストック一覧</h2>
+			<%= render 'users/stocks_index' %>	
+	</div>
 </div>
+

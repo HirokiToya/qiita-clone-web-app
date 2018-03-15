@@ -1,38 +1,14 @@
 <% provide(:title,"投稿一覧") %>
-<br><br><br>
-<%# 検索フォーム %>
-<br>
+
 <div class="container">
-  <div class="form">
-    <div class="form-body">
+  <div class="main">
+    <div class="search-form-body">
       <%= search_form_for @q do |f| %>     
         <%= f.search_field :title_cont, class: "search-form", :placeholder => "キーワードを入力" %>
         <span><%= f.submit "検索", class: "search-btn btn-success" %></span>
       <% end %>
-
     </div>
-  </div>
-
-  <br><br>
-
-  <div class="main posts-index">
-
-    <% @articles.each do |article| %>    
-     	  <div class="article">
-          <h4><%= link_to(article.title , "/articles/#{article.id}" ) %></h4>
-     	 	  <%= link_to gravatar_for(article.user,size: 50),article.user %>
-          <h6><%=link_to(article.user.name, article.user) %>が<%= article.created_at %>に投稿</h6>
-
-          <span class="fa fa-tags"></span>
-          <% article.tag_list.each do |tag| %>
-            <span class="label label-primary">
-              <%= link_to tag, tag_path(tag) %>
-            </span>  
-          <% end %>	 
-        </div>
-    <% end %>
-
-   <%= will_paginate @articles %> 
+    <%= render 'shared/posts_index', object: @articles %>
   </div>
 </div>
 

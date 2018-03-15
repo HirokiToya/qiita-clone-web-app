@@ -1,19 +1,13 @@
-<br><br><br><br>
 <% provide(:title, @article.title) %>
 
-<div class="main articles-show">
-  
-  <div class="container">
-    <div class="articles-show-item">        
+<div class="container">
+  <div class="main">
+          
       <%= link_to gravatar_for(@article.user,size: 50),@article.user %>
-    </div>
-
-    <div class="article-user-name">
       <h5><%= @article.user.name %></h5>
       <h5><%= @article.created_at %>に投稿</h5> 
-    </div>
        
-    <% if Stock.find_by(user_id: @current_user.id,article_id: @article.id)%>
+    <% if Stock.find_by(user_id: @current_user.id, article_id: @article.id)%>
       <%= link_to("/stocks/#{@article.id}/destroy",{method: "article"}) do %>
         <span class="fa fa-folder fa-2x" style="color:limegreen"></span>
       <% end %>
@@ -23,37 +17,27 @@
       <% end %>
     <% end %>
 
-    
     <h2><%= @article.title %></h2>
               
     <span class="fa fa-tags"></span>
       <% @article.tag_list.each do |tag| %>
         <span class="label label-primary"><%= link_to tag, tag_path(tag) %></span>  
-      <% end %> 
-      
+      <% end %>
+
       <br><br>
-      
-      
+
       <pre><%= @article.content %></pre>
 
       <br>
-      
 
       <% if @article.user_id == @current_user.id %>
-        <div class="article-menus">
-          <%= link_to("/articles/#{@article.id}/edit") do %>
-            <span class="fa fa-edit fa-2x"> &emsp;　</span>
-          <% end %>
-
-          <%= link_to("/articles/#{@article.id}/destroy", {method: "article", data: {confirm: '削除してもいいですか？' }}) do %>
-            <span class="fa fa-trash fa-2x"></span>
-          <% end %>
-        </div>
-
-      <% end %>
-          
+        <%= link_to("/articles/#{@article.id}/edit") do %>
+          <span class="fa fa-edit fa-2x"> &emsp;　</span>
+        <% end %>
+        <%= link_to("/articles/#{@article.id}/destroy",
+          {method: "article", data: {confirm: '削除してもいいですか？'}}) do %>
+          <span class="fa fa-trash fa-2x"></span>
+        <% end %>
+      <% end %>    
   </div>  
-
 </div>
-
-

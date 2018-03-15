@@ -1,26 +1,25 @@
-<br><br><br><br>
 <% provide(:title,"Log in") %>
 
 <div class="container">
-	<h2>Qiitaにログイン</h2>
-	
-	<% if @error_message %>
-		<div class="form-error">
-			<%= @error_message %>
-		</div>
-	<% end %>
-	
-	<%= form_for(:session, url:login_path) do |f| %>
-		<div><%= f.label :email,"Eメール" %></div>
-		<div><%= f.email_field :email, :placeholder =>"メールアドレスを入力してください" %></div>
-
-		<div><%= f.label :password,"パスワード" %></div>
-		<div><%= f.password_field :password, :placeholder => "パスワードを入力してください" %></div>
-
-		<div><br><%= f.submit "ログイン", class: "btn btn-success" %></div>
-
-	<% end %>
-	<br><p>Qiitaのアカウントを持っていない場合は <%= link_to "新規登録" , signup_path %>から</p>
-
+	<div class="main">
+		<h2>Qiitaにログイン</h2>
+		
+		<% if @error_message %>
+			<div class="form-error">
+				<%= @error_message %>
+			</div>
+		<% end %>
+		
+		<%= form_for(:session, url:login_path) do |f| %>
+			<%= f.label :email,"Eメール" %>
+			<%= f.email_field :email, :placeholder =>"メールアドレスを入力してください" %>
+			<%= f.label :password,"パスワード" %>
+			<%= f.password_field :password, :placeholder => "パスワードを入力してください" %>
+			<br><br>
+			<%= f.submit "ログイン", class: "btn btn-success" %>
+		<% end %>
+		<br>
+		<p>Qiitaのアカウントを持っていない場合は <%= link_to "新規登録" , signup_path %>から</p>
+	</div>
 </div>
 
