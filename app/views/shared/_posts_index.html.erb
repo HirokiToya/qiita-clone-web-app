@@ -1,4 +1,4 @@
-<% object.each do |article| %>    
+<% object.each do |article| %>
   <div class="article">
     <h4><%= link_to(article.title , "/articles/#{article.id}" ) %></h4>
     <%= link_to gravatar_for(article.user,size: 50),article.user %>
@@ -8,8 +8,8 @@
     <% article.tag_list.each do |tag| %>
       <span class="label label-primary">
         <%= link_to tag, tag_path(tag) %>
-      </span>  
-    <% end %>  
+      </span>
+    <% end %>
   </div>
 <% end %>
 <%= will_paginate object %>

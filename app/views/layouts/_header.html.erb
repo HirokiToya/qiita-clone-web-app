@@ -11,7 +11,7 @@
           <a><%= link_to gravatar_for(current_user,size: 50),current_user %></a>
           <a class="header-new"><%= link_to "投稿する", "/articles/new",:style => "color:white; text-decoration: none;"%></a>
           <a><%= link_to("ストック一覧","/users/#{@current_user.id}/stocks",:style => "color:white; text-decoration: none;") %></a>
-          <a class="header-logout"><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a> 
+          <a class="header-logout"><%= link_to "ログアウト", logout_path, method: :delete ,:style => "color:white; text-decoration: none;"%></a>
 
         <% else%>
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/login"=>"sessions#create"
   post "users/:id/update" => "users#update"
   delete "/logout"=>"sessions#destroy"
+  get "users" => "users#index"
   get "users/:id/stocks" => "users#stocks"
 
   get "articles/index"=>"articles#index"

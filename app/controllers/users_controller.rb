@@ -4,19 +4,18 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update]}
 
   def index
-
+    @users = User.find_by(id: 101)
+    render json: @users
   end
 
   def show
   	@user = User.find(params[:id])
-    @articles = Article.where(user_id: @user.id).paginate(page: params[:page])
+    @articles = Article.where(user_id: @user.id).includes(:taggings).paginate(page: params[:page])
   end
-
 
   def new
   	@user = User.new
   end
-
 
   def create
   	@user = User.new(new_user_params)
@@ -29,11 +28,9 @@ class UsersController < ApplicationController
   	end
   end
  
-
   def edit
   	@user = User.find(params[:id])
   end
-
 
   def update
   	@user = User.find(params[:id])
@@ -45,11 +42,9 @@ class UsersController < ApplicationController
   	end
   end
 
-
   def stocks
     @user = User.find_by(id: params[:id])
     @stocks = Stock.where(user_id: @user.id).reverse_order.paginate(page: params[:page])
-
   end
 
   private
@@ -70,6 +65,5 @@ class UsersController < ApplicationController
         redirect_to("/")
       end
     end
-
-
+    
 end

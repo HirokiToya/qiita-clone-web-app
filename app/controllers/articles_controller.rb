@@ -3,10 +3,10 @@ class ArticlesController < ApplicationController
 	before_action :authenticate_user
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
   	
-
 	def index
 		@q = Article.ransack(params[:q])
-		@articles = @q.result(distinct: true).paginate(page: params[:page])
+		@articles = @q.result(distinct: true).includes(:taggings).paginate(page: params[:page])
+
 	end
 
 	def tag_index
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 		end
 
 		@type = params[:tag]
-		@tag_articles = @articles.includes(:user).page(params[:page]).order("id DESC").paginate(page: params[:page])
+		@tag_articles = @articles.includes(:taggings).page(params[:page]).order("id DESC").paginate(page: params[:page])
 	end
 
 	def show
@@ -26,19 +26,16 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
-		@article = Article.new
-		
+		@article = Article.new	
 	end
 
 	def create
-
 		@article = Article.new
-
 		@article.title = params[:title]
 		@article.content = params[:content]
 		@article.user_id = @current_user.id
-		@article.tag_list = params[:tag_list] 
-
+		@article.tag_list = params[:tag_list]
+		
 		if @article.save
 			flash[:notice] = "投稿を作成しました"
 			redirect_to ("/articles/index")

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#ユーザー
+# ユーザー
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:  "foobar")
@@ -20,7 +20,7 @@ User.create!(name:  "Example User",
                password: password)
 end
 
-#マイクロポスト
+# マイクロポスト
 users = User.order(:created_at).take(6)
 50.times do
   title = Faker::Lorem.sentence(5)
